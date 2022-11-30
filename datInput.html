@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>control of date input in html</title>
+</head>
+<body>
+    <h1>To demonstrate how to use variables in JavaScript</h1>
+    <h1 class="sum"></h1>
+    <h1 class="product"></h1>
+    <h1 class="modulus"></h1>
+    <ul style='list-style:none'></ul>
+
+    <form>
+        <input type="date" id="itariki">
+        <input type="submit">
+    </form>
+    <h2></h2>
+    <script>
+        document.querySelector('form').onsubmit=function() {
+            let userdate = document.querySelector('#itariki').value;
+            let daytime = userdate.split('-')
+            const YEAR= parseInt(daytime[0])
+            const moMth = parseInt(daytime[1])
+            const tday = parseInt(daytime[2])
+           
+            let t = new Date()
+            const currentDate = t.getDate()
+            const currentMonth= t.getMonth()
+            const currentYear = t.getFullYear()
+            
+           
+            if(YEAR == currentYear){
+                if(moMth == currentMonth){
+                    if(tday == currentDate ){
+                        document.querySelector('h2').innerText = 'That is the current date'
+                    }else{
+                        document.querySelector('h2').innerText = 'That is the past date'
+                    }
+                }else if(currentDate > tday){
+                    document.querySelector('h2').innerText = 'That is the past date'
+                }else if(currentDate < tday){
+                    document.querySelector('h2').innerText = 'That is the future date'
+                }
+            }else if(YEAR < currentYear){
+                document.querySelector('h2').innerText = 'That is the past year'
+            }else if(YEAR > currentYear){
+                document.querySelector('h2').innerText = 'That is the future date'
+            }else{
+                document.querySelector('h2').innerText = 'check what you have entered'
+            }
+
+
+            return false
+        }
+        
+    </script>
+</body>
+</html>
